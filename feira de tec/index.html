@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil dos Animais</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+    }
+    .lista-animais {
+      width: 200px;
+    }
+    .lista-animais button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      background-color: #f0f0f0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      text-align: left;
+    }
+    .lista-animais button:hover {
+      background-color: #e0e0e0;
+    }
+    .cartao-detalhes {
+      border: 1px solid #ccc;
+      padding: 16px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+    }
+    .cartao-detalhes img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Lista de botões com os nomes -->
+  <div class="lista-animais">
+    <h3>Animais</h3>
+    <button onclick="mostrarAnimal('rex')">Rex (Cão)</button>
+    <button onclick="mostrarAnimal('mimi')">Mimi (Gato)</button>
+    <button onclick="mostrarAnimal('thor')">Thor (Cão)</button>
+  </div>
+
+  <!-- Área onde os detalhes aparecem -->
+  <div class="cartao-detalhes" id="detalhes">
+    <p>Clique em um animal para ver as informações.</p>
+  </div>
+
+  <script>
+    // Banco de dados simplificado dos animais
+    const animais = {
+      rex: {
+        nome: "Rex",
+        raca: "Pastor Alemão",
+        idade: "3 anos",
+        local: "São Paulo - SP",
+        foto: "https://images.unsplash.com/photo-1589941013453-ec89f33b5e95?w=400"
+      },
+      mimi: {
+        nome: "Mimi",
+        raca: "Siamês",
+        idade: "2 anos",
+        local: "Rio de Janeiro - RJ",
+        foto: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400"
+      },
+      thor: {
+        nome: "Thor",
+        raca: "Golden Retriever",
+        idade: "5 anos",
+        local: "Curitiba - PR",
+        foto: "https://images.unsplash.com/photo-1552053831-71594a27632d?w=400"
+      },
+    };
+
+    // Função que atualiza o HTML com os dados do animal selecionado
+    function mostrarAnimal(idAnimal) {
+      const animal = animais[idAnimal];
+      const container = document.getElementById("detalhes");
+
+      container.innerHTML = `
+        <img src="${animal.foto}" alt="${animal.nome}">
+        <h2>${animal.nome}</h2>
+        <p><strong>Raça:</strong> ${animal.raca}</p>
+        <p><strong>Idade:</strong> ${animal.idade}</p>
+        <p><strong>Local:</strong> ${animal.local}</p>
+      `;
+    }
+  </script>
+
+</body>
+</html>
